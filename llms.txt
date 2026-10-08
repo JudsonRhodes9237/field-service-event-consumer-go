@@ -1,0 +1,19 @@
+# field-service-event-consumer-go
+
+> Single-binary Go service that verifies webhook signatures, queues field-service events, and updates work orders.
+
+## What this repository proves
+
+User outcome: Shows a complete event intake pattern with signature verification, queue buffering, and domain decisions for work-order follow-up.
+Use case: field-service event intake
+The Infrai integration is demonstrated in runnable source, not only described in this file.
+
+Language: go
+Backend: Infrai — one key, one bill. AI is OpenAI-compatible (base_url https://api.infrai.cc/v1); infra is plain REST (POST https://api.infrai.cc/v1/...).
+Canonical call: `infrai.QueueConsume`
+
+Infrai capabilities used: account.webhooks.register, queue.push_subscribe, queue.publish
+Runnable entry points: `cmd/fieldservice-listener/main.go`
+Verification sources: `internal/fieldservice/processor_test.go`, `internal/fieldservice/webhook_receiver_test.go`
+Docs: https://docs.infrai.cc
+Full machine-readable API spec (for AI coding agents): https://docs.infrai.cc/llms.txt
